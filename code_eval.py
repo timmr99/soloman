@@ -13,11 +13,19 @@ class Cov:
 
 def longest(coverage):
 
+    if len(coverage) == 0:
+        return None
+
     data = [0 for i in range(366)]
 
     for i in coverage:
         eff = i.effective
         term = i.term
+        if eff < 1 or eff > 365:
+            return None
+        if term <1 or term > 365:
+            return None
+
         for j in range(eff,term+1):
             data[j] = -1
 
